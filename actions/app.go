@@ -16,6 +16,7 @@ import (
 	"github.com/gobuffalo/x/sessions"
 	"github.com/rs/cors"
 	"github.com/unrolled/secure"
+	tokenauth "github.com/gobuffalo/mw-tokenauth"
 )
 
 // ENV is used to help switch settings based on where the
@@ -61,11 +62,27 @@ func App() *buffalo.App {
 		// Set the request content type to JSON
 		app.Use(contenttype.Set("application/json"))
 
+		// Save AuthMiddleware function.
+		AuthMiddleware := tokenauth.New(tokenauth.Options{})
+
+		// Adding to my api the function.
+		app.Use(AuthMiddleware)
+
+		// Disable Auth Middleware in these fuctions
+		app.Middleware.Skip(
+			AuthMiddleware,
+			AuthLogin,
+			UsersCreate,
+		)
+
 		// Wraps each request in a transaction.
 		//   c.Value("tx").(*pop.Connection)
 		// Remove to disable this.
 		app.Use(popmw.Transaction(models.DB))
 		app.GET("/", HomeHandler)
+		app.POST("/users", UsersCreate)
+		app.POST("/users/auth", AuthLogin)
+		app.GET("/users", UsersRead)
 	})
 
 	return app

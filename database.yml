@@ -3,7 +3,7 @@ development:
   dialect: postgres
   database: scdsbackend_development
   user: postgres
-  password: postgres
+  password: 1
   host: 127.0.0.1
   pool: 5
 

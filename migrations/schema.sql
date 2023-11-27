@@ -21,6 +21,23 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: products; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.products (
+    id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    name character varying(255) NOT NULL,
+    price integer NOT NULL,
+    "desc" character varying(255) NOT NULL,
+    supplier_id uuid NOT NULL
+);
+
+
+ALTER TABLE public.products OWNER TO postgres;
+
+--
 -- Name: schema_migration; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -48,6 +65,28 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
+-- Name: warehouses; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.warehouses (
+    id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    location character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.warehouses OWNER TO postgres;
+
+--
+-- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.products
+    ADD CONSTRAINT products_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: schema_migration schema_migration_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -61,6 +100,14 @@ ALTER TABLE ONLY public.schema_migration
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: warehouses warehouses_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.warehouses
+    ADD CONSTRAINT warehouses_pkey PRIMARY KEY (id);
 
 
 --

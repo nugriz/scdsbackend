@@ -1,0 +1,6 @@
+create_table("warehouses") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+	t.Column("location", "string", {})
+
+}

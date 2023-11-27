@@ -13,10 +13,10 @@ import (
 	"github.com/gobuffalo/middleware/forcessl"
 	"github.com/gobuffalo/middleware/i18n"
 	"github.com/gobuffalo/middleware/paramlogger"
+	tokenauth "github.com/gobuffalo/mw-tokenauth"
 	"github.com/gobuffalo/x/sessions"
 	"github.com/rs/cors"
 	"github.com/unrolled/secure"
-	tokenauth "github.com/gobuffalo/mw-tokenauth"
 )
 
 // ENV is used to help switch settings based on where the
@@ -83,6 +83,15 @@ func App() *buffalo.App {
 		app.POST("/users", UsersCreate)
 		app.POST("/users/auth", AuthLogin)
 		app.GET("/users", UsersRead)
+		app.GET("/users/{supplier_id}/products", ProductsIndexBySupplier)
+		app.GET("/warehouses/{warehouse_id}/", WarehousesShow)
+		app.GET("/warehouses", WarehousesIndex)
+		app.POST("/warehouses", WarehousesCreate)
+		// app.GET("/warehouses/delete", WarehousesDelete)
+		app.GET("/products/{product_id}/", ProductsShow)
+		app.POST("/products", ProductsCreate)
+		app.GET("/products", ProductsIndex)
+		// app.GET("/products/delete", ProductsDelete)
 	})
 
 	return app

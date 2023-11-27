@@ -5,12 +5,11 @@ import (
 	"time"
 
 	"github.com/gobuffalo/pop/v6"
-	"github.com/gofrs/uuid"
 	"github.com/gobuffalo/validate"
 	"github.com/gobuffalo/validate/validators"
+	"github.com/gofrs/uuid"
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
-
 )
 
 // User is used by pop to map your .model.Name.Proper.Pluralize.Underscore database table to your go code.
@@ -21,6 +20,7 @@ type User struct {
 	Username  string    `json:"username" db:"username"`
 	Email     string    `json:"email" db:"email"`
 	Password  string    `json:"password" db:"password"`
+	Products  []Product `has_many:"products"`
 }
 
 // String is not required by pop and may be deleted
@@ -74,7 +74,6 @@ func (u *User) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
 	), err
 }
 
-
 // ValidateUpdate gets run every time you call "pop.ValidateAndUpdate" method.
 // This method is not required and may be deleted.
 // ValidateUpdate gets run every time you call "pop.ValidateAndUpdate" method.
@@ -114,5 +113,3 @@ func (u *User) BeforeCreate(tx *pop.Connection) error {
 	u.Password = string(hash)
 	return nil
 }
-
-

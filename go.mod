@@ -27,6 +27,7 @@ require (
 	github.com/gobuffalo/mw-tokenauth v1.0.2
 	github.com/gobuffalo/plush/v4 v4.1.19 // indirect
 	github.com/gobuffalo/validate v2.0.4+incompatible
+	github.com/gobuffalo/validate/v3 v3.3.3
 	github.com/gorilla/css v1.0.1 // indirect
 	github.com/joho/godotenv v1.5.1 // indirect
 	github.com/lib/pq v1.10.9 // indirect
@@ -58,7 +59,6 @@ require (
 	github.com/gobuffalo/nulls v0.4.2 // indirect
 	github.com/gobuffalo/refresh v1.13.3 // indirect
 	github.com/gobuffalo/tags/v3 v3.1.4 // indirect
-	github.com/gobuffalo/validate/v3 v3.3.3 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect

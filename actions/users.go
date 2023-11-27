@@ -3,12 +3,12 @@ package actions
 import (
 	"net/http"
 
-	"github.com/gobuffalo/buffalo"
 	"scdsbackend/models"
+
+	"github.com/gobuffalo/buffalo"
 
 	"github.com/gobuffalo/pop/v6"
 	"github.com/pkg/errors"
-
 )
 
 // UsersCreate default implementation.
@@ -41,8 +41,6 @@ func UsersCreate(c buffalo.Context) error {
 	return c.Render(http.StatusCreated, r.Auto(c, map[string]string{"message": "User Created"}))
 }
 
-
-
 // UsersRead default implementation.
 // UsersRead default implementation.
 func UsersRead(c buffalo.Context) error {
@@ -74,5 +72,3 @@ func UsersRead(c buffalo.Context) error {
 
 	return c.Render(http.StatusOK, r.Auto(c, users))
 }
-
-

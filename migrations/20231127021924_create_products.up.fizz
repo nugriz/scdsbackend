@@ -1,0 +1,9 @@
+create_table("products") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+	t.Column("name", "string", {})
+	t.Column("price", "integer", {})
+	t.Column("desc", "string", {})
+	t.Column("supplier_id", "uuid", {})
+
+}

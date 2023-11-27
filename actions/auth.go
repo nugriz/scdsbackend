@@ -6,14 +6,14 @@ import (
 	"os"
 	"time"
 
-
-	"github.com/gobuffalo/buffalo"
 	"scdsbackend/models"
 
+	"github.com/gobuffalo/buffalo"
+
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gobuffalo/pop/v6"
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/bcrypt"
-	"github.com/dgrijalva/jwt-go"
 )
 
 // AuthLogin default implementation.
@@ -76,5 +76,3 @@ func AuthLogin(c buffalo.Context) error {
 
 	return c.Render(http.StatusAccepted, r.Auto(c, map[string]string{"token": tokenString}))
 }
-
-

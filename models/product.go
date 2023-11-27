@@ -15,9 +15,9 @@ type Product struct {
 	ID         uuid.UUID `json:"id" db:"id"`
 	CreatedAt  time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt  time.Time `json:"updated_at" db:"updated_at"`
-	Name	   string    `json:"name" db:"name"`
-	Price	   int		 `json:"price" db:"price"`
-	Desc 	   string  	 `json:"desc" db:"desc"`
+	Name       string    `json:"name" db:"name"`
+	Price      int       `json:"price" db:"price"`
+	Desc       string    `json:"desc" db:"desc"`
 	SupplierID uuid.UUID `json:"supplier_id" db:"supplier_id"`
 }
 

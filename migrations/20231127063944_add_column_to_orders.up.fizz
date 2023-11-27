@@ -1,0 +1,4 @@
+add_column("orders", "product_id", "uuid", {})
+add_column("orders", "buyer_id", "uuid", {})
+add_column("orders", "quantity", "integer", {})
+add_column("orders", "total", "integer", {})

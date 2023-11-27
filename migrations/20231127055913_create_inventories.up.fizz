@@ -1,0 +1,7 @@
+create_table("inventories") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+	t.Column("warehouse_id", "uuid", {})
+	t.Column("product_id", "uuid", {})
+	t.Column("stock", "integer", {})
+}

@@ -15,4 +15,3 @@ func (as *ActionSuite) Test_Products_Index() {
 func (as *ActionSuite) Test_Products_Delete() {
 	as.Fail("Not Implemented!")
 }
-

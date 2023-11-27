@@ -21,6 +21,39 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: inventories; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.inventories (
+    id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    warehouse_id uuid NOT NULL,
+    product_id uuid NOT NULL,
+    stock integer NOT NULL
+);
+
+
+ALTER TABLE public.inventories OWNER TO postgres;
+
+--
+-- Name: orders; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.orders (
+    id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    product_id uuid NOT NULL,
+    buyer_id uuid NOT NULL,
+    quantity integer NOT NULL,
+    total integer NOT NULL
+);
+
+
+ALTER TABLE public.orders OWNER TO postgres;
+
+--
 -- Name: products; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -77,6 +110,22 @@ CREATE TABLE public.warehouses (
 
 
 ALTER TABLE public.warehouses OWNER TO postgres;
+
+--
+-- Name: inventories inventories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.inventories
+    ADD CONSTRAINT inventories_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: orders orders_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.orders
+    ADD CONSTRAINT orders_pkey PRIMARY KEY (id);
+
 
 --
 -- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres

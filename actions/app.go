@@ -84,7 +84,9 @@ func App() *buffalo.App {
 		app.POST("/users/auth", AuthLogin)
 		app.GET("/users", UsersRead)
 		app.GET("/users/{supplier_id}/products", ProductsIndexBySupplier)
+		app.GET("/users/{buyer_id}/orders", OrdersIndex)
 		app.GET("/warehouses/{warehouse_id}/", WarehousesShow)
+		app.GET("/warehouses/{warehouse_id}/inventories", InventoriesIndex)
 		app.GET("/warehouses", WarehousesIndex)
 		app.POST("/warehouses", WarehousesCreate)
 		// app.GET("/warehouses/delete", WarehousesDelete)
@@ -92,6 +94,8 @@ func App() *buffalo.App {
 		app.POST("/products", ProductsCreate)
 		app.GET("/products", ProductsIndex)
 		// app.GET("/products/delete", ProductsDelete)
+		app.POST("/inventories/", InventoriesCreate)
+		app.POST("/orders", OrdersCreate)
 	})
 
 	return app

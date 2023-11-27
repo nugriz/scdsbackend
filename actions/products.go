@@ -87,4 +87,3 @@ func ProductsIndex(c buffalo.Context) error {
 func ProductsDelete(c buffalo.Context) error {
 	return c.Render(http.StatusOK, r.HTML("products/delete.html"))
 }
-

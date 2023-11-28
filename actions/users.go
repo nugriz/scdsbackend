@@ -41,6 +41,21 @@ func UsersCreate(c buffalo.Context) error {
 	return c.Render(http.StatusCreated, r.Auto(c, map[string]string{"message": "User Created"}))
 }
 
+func UsersShow(c buffalo.Context) error {
+	id := c.Param("user_id")
+
+	// create a variable to receive the todo
+	user := models.User{}
+	// grab the todo from the database
+	err := models.DB.Find(&user, id)
+	// handle possible error
+	if err != nil {
+		return c.Render(http.StatusOK, r.JSON(err))
+	}
+	//return the data as json
+	return c.Render(http.StatusOK, r.JSON(&user))
+}
+
 // UsersRead default implementation.
 // UsersRead default implementation.
 func UsersRead(c buffalo.Context) error {

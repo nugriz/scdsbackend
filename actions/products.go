@@ -73,7 +73,7 @@ func ProductsIndexBySupplier(c buffalo.Context) error {
 // ProductsIndex default implementation.
 func ProductsIndex(c buffalo.Context) error {
 	products := []models.Product{}
-	err := models.DB.All(&products)
+	err := models.DB.Order("id desc").All(&products)
 	if err != nil {
 		return errors.WithStack(err)
 	}

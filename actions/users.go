@@ -56,6 +56,21 @@ func UsersShow(c buffalo.Context) error {
 	return c.Render(http.StatusOK, r.JSON(&user))
 }
 
+func UsersShowByEmail(c buffalo.Context) error {
+	email := c.Param("email")
+
+	// create a variable to receive the todo
+	users := []models.User{}
+	// grab the todo from the database
+	err := models.DB.Where("email in (?)", email).All(&users)
+	// handle possible error
+	if err != nil {
+		return c.Render(http.StatusOK, r.JSON(err))
+	}
+	//return the data as json
+	return c.Render(http.StatusOK, r.JSON(&users))
+}
+
 // UsersRead default implementation.
 // UsersRead default implementation.
 func UsersRead(c buffalo.Context) error {

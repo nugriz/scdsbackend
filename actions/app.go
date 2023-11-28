@@ -84,6 +84,7 @@ func App() *buffalo.App {
 		app.POST("/users/auth", AuthLogin)
 		app.GET("/users", UsersRead)
 		app.GET("/users/{user_id}/", UsersShow)
+		app.GET("/users/e/{email}/", UsersShowByEmail)
 		app.GET("/users/{supplier_id}/products", ProductsIndexBySupplier)
 		app.GET("/users/{buyer_id}/orders", OrdersIndex)
 		app.GET("/warehouses/{warehouse_id}/", WarehousesShow)

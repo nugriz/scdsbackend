@@ -105,7 +105,8 @@ CREATE TABLE public.warehouses (
     id uuid NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL,
-    location character varying(255) NOT NULL
+    location character varying(255) NOT NULL,
+    seller_id uuid
 );
 
 

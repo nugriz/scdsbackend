@@ -16,6 +16,7 @@ type Warehouse struct {
 	Location  string    `json:"location" db:"location"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
+	SellerID  uuid.UUID `json:"seller_id" db:"seller_id"`
 }
 
 // String is not required by pop and may be deleted

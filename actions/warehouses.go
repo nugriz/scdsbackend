@@ -27,26 +27,9 @@ func WarehousesShow(c buffalo.Context) error {
 
 // WarehousesIndex default implementation.
 func WarehousesIndex(c buffalo.Context) error {
-	warehouses := &models.Warehouses{}
-
-	// Get the DB connection from the context.
-	tx, ok := c.Value("tx").(*pop.Connection)
-	if !ok {
-		return errors.WithStack(errors.New("no transaction found"))
-	}
-
-	// Paginate results. Params "page" and "per_page" control pagination.
-	// Default values are "page=1" and "per_page=20".
-	// Add Order for date.
-	q := tx.PaginateFromParams(c.Params()).Order("created_at asc")
-
-	// Retrieve all Users from the DB. Select all except password.
-	if err := q.Select(
-		"id",
-		"created_at",
-		"updated_at",
-		"location",
-	).All(warehouses); err != nil {
+	warehouses := []models.Warehouse{}
+	err := models.DB.Order("id desc").All(&warehouses)
+	if err != nil {
 		return errors.WithStack(err)
 	}
 	// Add the paginator to the context so it can be used in the template.

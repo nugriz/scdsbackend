@@ -11,4 +11,3 @@ func (as *ActionSuite) Test_Orders_Index() {
 func (as *ActionSuite) Test_Orders_Show() {
 	as.Fail("Not Implemented!")
 }
-

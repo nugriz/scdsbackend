@@ -98,8 +98,10 @@ func App() *buffalo.App {
 		// app.GET("/products/delete", ProductsDelete)
 		app.POST("/inventories/", InventoriesCreate)
 		app.POST("/orders", OrdersCreate)
-		
-		
+		app.GET("/orders", OrdersList)
+
+		app.POST("/chats", ChatsCreate)
+		app.GET("/chats", ChatsIndex)
 	})
 
 	return app

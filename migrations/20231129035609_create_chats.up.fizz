@@ -1,0 +1,7 @@
+create_table("chats") {
+	t.Column("id", "uuid", {primary: true})
+	t.Timestamps()
+	t.Column("message", "string", {})
+	t.Column("sender_id", "uuid", {})
+	t.Column("receiver_id", "uuid", {})
+}

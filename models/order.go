@@ -17,8 +17,9 @@ type Order struct {
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
 	ProductID uuid.UUID `json:"product_id" db:"product_id"`
 	BuyerID   uuid.UUID `json:"buyer_id" db:"buyer_id"`
-	Quantity  int		`json:"quantity" db:"quantity"`
-	Total	  int		`json:"total" db:"total"`
+	Quantity  int       `json:"quantity" db:"quantity"`
+	Total     int       `json:"total" db:"total"`
+	Address   string    `json:"address" db:"address"`
 }
 
 // String is not required by pop and may be deleted
@@ -51,6 +52,7 @@ func (o *Order) ValidateCreate(tx *pop.Connection) (*validate.Errors, error) {
 		&validators.UUIDIsPresent{Field: o.BuyerID, Name: "BuyerID"},
 		&validators.IntIsPresent{Field: o.Quantity, Name: "Quantity"},
 		&validators.IntIsPresent{Field: o.Total, Name: "Total"},
+		&validators.StringIsPresent{Field: o.Address, Name: "Address"},
 	), err
 }
 

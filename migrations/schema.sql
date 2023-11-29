@@ -21,6 +21,22 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: chats; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.chats (
+    id uuid NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL,
+    message character varying(255) NOT NULL,
+    sender_id uuid NOT NULL,
+    receiver_id uuid NOT NULL
+);
+
+
+ALTER TABLE public.chats OWNER TO postgres;
+
+--
 -- Name: inventories; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -47,7 +63,8 @@ CREATE TABLE public.orders (
     product_id uuid NOT NULL,
     buyer_id uuid NOT NULL,
     quantity integer NOT NULL,
-    total integer NOT NULL
+    total integer NOT NULL,
+    address character varying(255) NOT NULL
 );
 
 
@@ -111,6 +128,14 @@ CREATE TABLE public.warehouses (
 
 
 ALTER TABLE public.warehouses OWNER TO postgres;
+
+--
+-- Name: chats chats_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.chats
+    ADD CONSTRAINT chats_pkey PRIMARY KEY (id);
+
 
 --
 -- Name: inventories inventories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres

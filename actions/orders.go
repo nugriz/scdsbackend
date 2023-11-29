@@ -39,6 +39,18 @@ func OrdersCreate(c buffalo.Context) error {
 }
 
 // OrdersIndex default implementation.
+func OrdersList(c buffalo.Context) error {
+	o := []models.Order{}
+	err := models.DB.Order("id desc").All(&o)
+	if err != nil {
+		return errors.WithStack(err)
+	}
+	// Add the paginator to the context so it can be used in the template.
+	//c.Set("pagination", q.Paginator)
+
+	return c.Render(http.StatusOK, r.Auto(c, o))
+}
+
 func OrdersIndex(c buffalo.Context) error {
 	buyer_id := c.Param("buyer_id")
 	orders := []models.Order{}
@@ -55,9 +67,7 @@ func OrdersIndex(c buffalo.Context) error {
 	return c.Render(http.StatusOK, r.Auto(c, orders))
 }
 
-
 // OrdersShow default implementation.
 func OrdersShow(c buffalo.Context) error {
 	return c.Render(http.StatusOK, r.HTML("orders/show.html"))
 }
-

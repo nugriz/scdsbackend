@@ -20,8 +20,6 @@ func (as *ActionSuite) Test_Warehouses_Delete() {
 	as.Fail("Not Implemented!")
 }
 
-
 func (as *ActionSuite) Test_Warehouses_Delete() {
 	as.Fail("Not Implemented!")
 }
-

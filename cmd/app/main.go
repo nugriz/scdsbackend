@@ -15,7 +15,7 @@ import (
 func main() {
 	app := actions.App()
 	port, err := os.Getenv("PORT")
-	if err := app.Serve("3000"); err != nil {
+	if err := app.Serve(port); err != nil {
 		log.Fatal(err)
 	}
 }

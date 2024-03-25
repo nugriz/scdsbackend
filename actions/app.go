@@ -70,12 +70,13 @@ func App() *buffalo.App {
 		// Adding to my api the function.
 		app.Use(AuthMiddleware)
 
-		// Serve the application on port 3000
-		port := os.Getenv("PORT")
-		if port == "" {
-			port = "3000" // default to 3000 if PORT environment variable is not set
-		}
+		// Set the port to 3000
+		port := "3000"
+
+		// Set the address to listen on, including the port
 		addr := ":" + port
+	
+		// Serve the application
 		log.Printf("Starting server on %s\n", addr)
 		if err := http.ListenAndServe(addr, app); err != nil {
 			log.Fatal(err)

@@ -2,8 +2,6 @@ package actions
 
 import (
 	"sync"
-	"os"
-	"http"
 
 	"scdsbackend/locales"
 	"scdsbackend/models"

@@ -70,17 +70,7 @@ func App() *buffalo.App {
 		// Adding to my api the function.
 		app.Use(AuthMiddleware)
 
-		// Set the port to 3000
-		port := "3000"
-
-		// Set the address to listen on, including the port
-		addr := ":" + port
-	
-		// Serve the application
-		log.Printf("Starting server on %s\n", addr)
-		if err := http.ListenAndServe(addr, app); err != nil {
-			log.Fatal(err)
-		}
+		
 
 		// Disable Auth Middleware in these fuctions
 		app.Middleware.Skip(

@@ -7,4 +7,3 @@ func (as *ActionSuite) Test_Chats_Create() {
 func (as *ActionSuite) Test_Chats_Index() {
 	as.Fail("Not Implemented!")
 }
-

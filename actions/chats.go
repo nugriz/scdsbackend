@@ -50,4 +50,3 @@ func ChatsIndex(c buffalo.Context) error {
 
 	return c.Render(http.StatusOK, r.Auto(c, chats))
 }
-

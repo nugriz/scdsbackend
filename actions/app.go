@@ -2,6 +2,8 @@ package actions
 
 import (
 	"sync"
+	"os"
+	"http"
 
 	"scdsbackend/locales"
 	"scdsbackend/models"
@@ -67,6 +69,17 @@ func App() *buffalo.App {
 
 		// Adding to my api the function.
 		app.Use(AuthMiddleware)
+
+		// Serve the application on port 3000
+		port := os.Getenv("PORT")
+		if port == "" {
+			port = "3000" // default to 3000 if PORT environment variable is not set
+		}
+		addr := ":" + port
+		log.Printf("Starting server on %s\n", addr)
+		if err := http.ListenAndServe(addr, app); err != nil {
+			log.Fatal(err)
+		}
 
 		// Disable Auth Middleware in these fuctions
 		app.Middleware.Skip(
